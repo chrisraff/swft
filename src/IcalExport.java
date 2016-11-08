@@ -3,14 +3,16 @@ import java.util.ArrayList;
 public class IcalExport {
 	public static String timeZone = "America/New_York";
 	
-	public static String exportClasses(ArrayList<Class> classes) {
+	public static String exportClasses(Schedule sched) {
 		String tr = "BEGIN:VCALENDAR\n"
 				+ "CALSCALE:GREGORIAN\n"
 				+ "VERSION:2.0\n"
-				+ "PRODID:-//SpireWithFewerTears//IcalExport Version 0.9.1//EN\n"
+				+ "PRODID:-//SpireWithFewerTears//IcalExport Version 0.9.2//EN\n"
 				+ "METHOD:PUBLISH\n";
 		
 		tr += getTimeZone() + "\n";
+		
+		ArrayList<Class> classes = sched.getClasses();
 		
 		for (Class c: classes) {
 			tr += c.toIcalEvent() + "\n";

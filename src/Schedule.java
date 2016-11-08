@@ -12,16 +12,18 @@ import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 
-public class Draw {
-	public static void main(String[] args) throws IOException {
-		Scanner scan = new Scanner(new File("sched_in.txt"));
-		ArrayList<Class> classes = new ArrayList<Class>();
+public class Schedule {
+	ArrayList<Class> classes = new ArrayList<Class>();
+	private int numParentClasses;
+	
+	public Schedule(File rawSchedule) throws IOException {
+		Scanner scan = new Scanner(rawSchedule);
 		String carryOver = scan.next();
-		int numParentClasses = 0;
+		numParentClasses = 0;
 		
 		while (scan.hasNextLine()) {
 			Class nc = new Class();
-			nc.section = carryOver; System.out.println("Debug: " + carryOver);
+			nc.major = carryOver; //System.out.println("Debug: " + carryOver);
 			nc.number = scan.nextInt();
 			scan.next();// "-"
 			nc.name = scan.nextLine();
@@ -41,9 +43,9 @@ public class Draw {
 				Class toAdd = nc.clone();
 				//beware of credit stacking due to Lectures and discussions having the same credit count
 				
-				toAdd.snumber = Integer.parseInt(carryOver);
+				toAdd.classNumber = Integer.parseInt(carryOver);
 				scan.nextLine();//fix cursor
-				scan.nextLine();//section number 01 02 ... and nonsense for discussions
+				toAdd.section = scan.nextLine();//section number 01 02 ... and nonsense for discussions
 				toAdd.type = scan.nextLine();
 				toAdd.days = Class.parseDays(scan.next());
 				toAdd.stime = Class.parseTime(scan.next());
@@ -96,13 +98,15 @@ public class Draw {
 			}
 		}
 		scan.close();
-		//done parsing file into classes
+	}
+	
+	
+//		String cal = IcalExport.exportClasses(classes);
+//		FileWriter fw = new FileWriter("schedule.ics");
+//		fw.write(cal);
+//		fw.close();
 		
-		String cal = IcalExport.exportClasses(classes);
-		FileWriter fw = new FileWriter("schedule.ics");
-		fw.write(cal);
-		fw.close();
-		
+	public BufferedImage getImage() {
 		//set colors so they're evenly spaced between parent classes
 		float hue = (float)Math.random();
 		for (Class c: classes) {
@@ -175,12 +179,15 @@ public class Draw {
 		g.setColor(Color.gray);
 		g.drawString("Spire With Fewer Tears", gX, (int)(gY*1.5) + h*gsY + 15);
 		
-		@SuppressWarnings(value = { "unused" })
-		GUI gui = new GUI(output);
-		
-		File f = new File("Schedule.png");
-		ImageIO.write(output, "PNG", f);
+		return output;
 	}
+		
+//		@SuppressWarnings(value = { "unused" })
+//		GUI gui = new GUI(output);
+//		
+//		File f = new File("Schedule.png");
+//		ImageIO.write(output, "PNG", f);
+		
 	private static boolean isNumber(String s) {
 		try {
 			Integer.parseInt(s);
@@ -189,5 +196,9 @@ public class Draw {
 			return false;
 		}
 		return true;
+	}
+	
+	public ArrayList<Class> getClasses() {
+		return (ArrayList<Class>)classes.clone();
 	}
 }
