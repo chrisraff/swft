@@ -147,7 +147,7 @@ public class Schedule {
 					int sOffX = 1, sOffY = 1;
 					g.translate(sOffX, sOffY);
 					g.setColor(Color.darkGray);
-					g.drawString(c.section + " " + c.number, gX + gsX/30 + gsX*i, gY + gsY/10 +10 + (int)(stime*gsY - 8*gsY));
+					g.drawString(c.major + " " + c.number, gX + gsX/30 + gsX*i, gY + gsY/10 +10 + (int)(stime*gsY - 8*gsY));
 					g.setFont(location);
 					g.drawString(c.location, gX + gsX/30 + gsX*i, gY + gsY/10 +10 +10 + (int)(stime*gsY - 8*gsY));
 					g.drawString(c.stime[0] + ":" + String.format("%02d", c.stime[1]) + " - " + c.etime[0] + ":" + String.format("%02d", c.etime[1]), gX + gsX/30 + gsX*i, gY + gsY/10 +10 +10*2 + (int)(stime*gsY - 8*gsY));
@@ -156,7 +156,7 @@ public class Schedule {
 					g.translate(-sOffX, -sOffY);
 					
 					g.setColor(Color.white);
-					g.drawString(c.section + " " + c.number, gX + gsX/30 + gsX*i, gY + gsY/10 +10 + (int)(stime*gsY - 8*gsY));
+					g.drawString(c.major + " " + c.number, gX + gsX/30 + gsX*i, gY + gsY/10 +10 + (int)(stime*gsY - 8*gsY));
 					g.setFont(location);
 					g.drawString(c.location, gX + gsX/30 + gsX*i, gY + gsY/10 +10 +10 + (int)(stime*gsY - 8*gsY));
 					g.drawString(c.stime[0] + ":" + String.format("%02d", c.stime[1]) + " - " + c.etime[0] + ":" + String.format("%02d", c.etime[1]), gX + gsX/30 + gsX*i, gY + gsY/10 +10 +10*2 + (int)(stime*gsY - 8*gsY));
