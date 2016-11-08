@@ -3,7 +3,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-//import java.util.Scanner;
 
 public class SWFT {
 	
@@ -12,6 +11,7 @@ public class SWFT {
 			java.util.Scanner scan = new java.util.Scanner(System.in);
 			System.out.print("Type the name of the file that contains the pasted schedule: ");
 			args = new String[] {scan.nextLine()};
+			scan.close();
 		}
 		
 		Schedule sched;

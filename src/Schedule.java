@@ -4,13 +4,9 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-//import java.util.Arrays;
 import java.util.Scanner;
-
-import javax.imageio.ImageIO;
 
 public class Schedule {
 	ArrayList<Class> classes = new ArrayList<Class>();
@@ -99,12 +95,6 @@ public class Schedule {
 		}
 		scan.close();
 	}
-	
-	
-//		String cal = IcalExport.exportClasses(classes);
-//		FileWriter fw = new FileWriter("schedule.ics");
-//		fw.write(cal);
-//		fw.close();
 		
 	public BufferedImage getImage() {
 		//set colors so they're evenly spaced between parent classes
@@ -182,12 +172,6 @@ public class Schedule {
 		return output;
 	}
 		
-//		@SuppressWarnings(value = { "unused" })
-//		GUI gui = new GUI(output);
-//		
-//		File f = new File("Schedule.png");
-//		ImageIO.write(output, "PNG", f);
-		
 	private static boolean isNumber(String s) {
 		try {
 			Integer.parseInt(s);
@@ -198,6 +182,7 @@ public class Schedule {
 		return true;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public ArrayList<Class> getClasses() {
 		return (ArrayList<Class>)classes.clone();
 	}

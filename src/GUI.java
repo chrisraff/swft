@@ -1,13 +1,11 @@
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.File;
-
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 //this thing is useless
 public class GUI extends JPanel {
+	private static final long serialVersionUID = 1L;
 	public BufferedImage image;
 	
 	public GUI(BufferedImage image) {

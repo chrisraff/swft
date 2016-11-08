@@ -1,8 +1,8 @@
 import java.awt.*;
 import javax.swing.*;
 public  class DisplayWindow extends JFrame{
-
-  private Container c;
+	private static final long serialVersionUID = 1L;
+private Container c;
 
   public DisplayWindow(){
     super("Spire With Fewer Tears");
