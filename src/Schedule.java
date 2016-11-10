@@ -16,6 +16,7 @@ public class Schedule {
 		Scanner scan = new Scanner(rawSchedule);
 		if(!scan.hasNextLine()) {
 			System.out.println("File is empty!");
+			scan.close();
 			return;
 		}
 		String carryOver = scan.next();
