@@ -14,6 +14,10 @@ public class Schedule {
 	
 	public Schedule(File rawSchedule) throws IOException {
 		Scanner scan = new Scanner(rawSchedule);
+		if(!scan.hasNextLine()) {
+			System.out.println("File is empty!");
+			break;
+		}
 		String carryOver = scan.next();
 		numParentClasses = 0;
 		
