@@ -28,6 +28,7 @@ public class SWFT {
 			if (args[i].equals("-noCal")) outputs[1] = false;
 		}
 		
+		//declare the output file name. If the input filename has the form 'name.xxx', then the file extension will be removed
 		String outputName = args[0];
 		if (Pattern.matches("^.+\\.[a-zA-Z]{3}$", outputName)) {
 			outputName = outputName.substring(0, outputName.length()-4);
