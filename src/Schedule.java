@@ -83,7 +83,7 @@ public class Schedule {
 				
 				classes.add(toAdd);
 				
-				System.out.println(toAdd);//print the added class to console for debugging purposes
+				//System.out.println(toAdd);//print the added class to console for debugging purposes
 				
 				if (scan.hasNextLine()) {
 					do {
