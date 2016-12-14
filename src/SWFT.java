@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
 
@@ -27,11 +28,16 @@ public class SWFT {
 			if (args[i].equals("-noCal")) outputs[1] = false;
 		}
 		
+		String outputName = args[0];
+		if (Pattern.matches("^.+\\.[a-zA-Z]{3}$", outputName)) {
+			outputName = outputName.substring(0, outputName.length()-4);
+		}
+		
 		if (outputs[0]) {
-			File f = new File("Schedule.png");
+			File f = new File(outputName + ".png");
 			try {
 				ImageIO.write(sched.getImage(), "PNG", f);
-				System.out.println("Wrote image to Schedule.png");
+				System.out.println("Wrote image to " + outputName + ".png");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -41,10 +47,10 @@ public class SWFT {
 			String cal = IcalExport.exportClasses(sched);
 			FileWriter fw;
 			try {
-				fw = new FileWriter("Schedule.ics");
+				fw = new FileWriter(outputName + ".ics");
 				fw.write(cal);
 				fw.close();
-				System.out.println("Wrote calendar to Schedule.ics");
+				System.out.println("Wrote calendar to " + outputName + ".ics");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
