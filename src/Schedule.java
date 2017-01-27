@@ -22,7 +22,7 @@ public class Schedule {
 		String carryOver = scan.next();
 		numParentClasses = 0;
 		
-		while (scan.hasNextLine()) {
+		while (scan.hasNext()) {
 			Class nc = new Class();
 			nc.major = carryOver; //System.out.println("Debug: " + carryOver);
 			nc.number = scan.nextInt();
@@ -55,7 +55,7 @@ public class Schedule {
 				scan.nextLine();//cursor alignment
 				toAdd.location = scan.nextLine();
 				toAdd.instructor = scan.nextLine();
-				//If a class has multiple instructor, they will each be on their own line and all (hopefully) except the last will have a comma and space at the end.
+				//If a class has multiple instructors, they will each be on their own line and all (hopefully) except the last will have a comma and space at the end.
 				while (toAdd.instructor.endsWith(", ")) {
 					toAdd.instructor += scan.nextLine();
 				}
@@ -83,19 +83,29 @@ public class Schedule {
 				
 				classes.add(toAdd);
 				
-				//System.out.println(toAdd);//print the added class to console for debugging purposes
+				System.out.println(toAdd);//print the added class to console for debugging purposes
 				
-				if (scan.hasNextLine()) {
+				//skip optional trailing information that is irrelevant (only known example so far is "URL")
+				while (scan.hasNext()) {
+					carryOver = scan.next();
+					if (!carryOver.equals("URL"))
+						break;
+				}
+				if (!scan.hasNext()) {
+					carryOver = "I'm not a number";
+				}
+				
+				/*if (scan.hasNext()) {
 					do {
-						carryOver = scan.next(); //checks to see if it's a class number or a new SECTION signifying a new class	
-					} 
+						carryOver = scan.next(); //checks to see if it's a class number or a new SECTION signifying a new class
+					}
 					while (carryOver.equals("URL"));
 					// Sometimes there are extra information entries trailing after "Start/End date".
 					// I suppose I will have to catch them on a case per case basis for now 
 					
 				}
 				else 
-					carryOver = "I'm not a number"; //this should never matter because scan.hasNextLine() will be false and the while loop will end
+					carryOver = "I'm not a number"; //this should never matter because scan.hasNextLine() will be false and the while loop will end*/
 			}
 		}
 		scan.close();
