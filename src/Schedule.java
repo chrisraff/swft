@@ -25,7 +25,7 @@ public class Schedule {
 		while (scan.hasNext()) {
 			Class nc = new Class();
 			nc.major = carryOver; //System.out.println("Debug: " + carryOver);
-			nc.number = scan.nextInt();
+			nc.number = scan.next();
 			scan.next();// "-"
 			nc.name = scan.nextLine();
 			scan.nextLine();//header
@@ -44,7 +44,7 @@ public class Schedule {
 				Class toAdd = nc.clone();
 				//beware of credit stacking due to lectures and discussions having the same credit count
 				
-				toAdd.classNumber = Integer.parseInt(carryOver);
+				toAdd.classNumber = carryOver;
 				scan.nextLine();//fix cursor
 				toAdd.section = scan.nextLine();//section number 01 02 ... and nonsense for discussions
 				toAdd.type = scan.nextLine();

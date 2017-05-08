@@ -6,7 +6,7 @@ public class Class {
 	public String major, name, type, location, instructor, section;
 	public int[] stime = new int[2], etime = new int[2];
 	public int[] sdate = new int[3], edate = new int[3];
-	public int number, classNumber;
+	public String number, classNumber;
 	public boolean[] days = new boolean[5];
 	public boolean enrolled;
 	public float credits;
