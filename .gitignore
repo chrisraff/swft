@@ -3,3 +3,4 @@
 *.slv
 src/DisplayWindow.java
 src/GUI.java
+bin/

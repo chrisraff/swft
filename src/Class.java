@@ -63,7 +63,7 @@ public class Class {
 		int sdateOffset = 0;
 		for (int i = day-2; i < day-2 + 7; i++) {//convert day so it lines up with the 'days' boolean array
 			//THIS WILL PRODUCE INCORRECT RESULTS IF THERE ARE WEEKEND CLASSES, I believe it will start the class 6 days after the first day of the semester
-			if (i%7<5 && days[i]) {
+			if (i%7<5 && days[i%7]) {
 				break;
 			} else sdateOffset++;
 		}

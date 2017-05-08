@@ -42,7 +42,7 @@ public class Schedule {
 			ArrayList<Class> unParented = new ArrayList<Class>();
 			while (isNumber(carryOver)) {
 				Class toAdd = nc.clone();
-				//beware of credit stacking due to Lectures and discussions having the same credit count
+				//beware of credit stacking due to lectures and discussions having the same credit count
 				
 				toAdd.classNumber = Integer.parseInt(carryOver);
 				scan.nextLine();//fix cursor
@@ -88,24 +88,14 @@ public class Schedule {
 				//skip optional trailing information that is irrelevant (only known example so far is "URL")
 				while (scan.hasNext()) {
 					carryOver = scan.next();
+					// Sometimes there are extra information entries trailing after "Start/End date".
+					// I suppose I will have to catch them on a case by case basis for now 
 					if (!carryOver.equals("URL"))
 						break;
 				}
 				if (!scan.hasNext()) {
-					carryOver = "I'm not a number";
+					carryOver = "I'm not a number"; //this should never matter because scan.hasNext() will be false and the parse while loop will end
 				}
-				
-				/*if (scan.hasNext()) {
-					do {
-						carryOver = scan.next(); //checks to see if it's a class number or a new SECTION signifying a new class
-					}
-					while (carryOver.equals("URL"));
-					// Sometimes there are extra information entries trailing after "Start/End date".
-					// I suppose I will have to catch them on a case per case basis for now 
-					
-				}
-				else 
-					carryOver = "I'm not a number"; //this should never matter because scan.hasNextLine() will be false and the while loop will end*/
 			}
 		}
 		scan.close();
