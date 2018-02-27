@@ -1,5 +1,8 @@
 # Spire With Fewer Tears
 
+Online version available!
+http://chrisraff.com/swft/
+
 ### Description
 Spire With Fewer Tears is a tool intended for use by students where Spire is used for registration in courses. SWFT allows you to turn your class schedule into a simple calendar image as opposed to the atrocious "Weekly Calendar View" that Spire presents. SWFT also allows you to turn your calendar into iCalendar events so you can effortlessly add them to your calendar.
 
